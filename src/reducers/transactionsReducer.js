@@ -7,7 +7,7 @@ const transactionsReducer = (state = [], action) => {
     case TRANSACTIONS.UPDATE:
       return state.map(t => {
         if (t.id === action.transaction.id) {
-          return action.transaction;
+          return { ...action.transaction, status: action.status };
         }
         return t;
       });

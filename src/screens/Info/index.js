@@ -6,20 +6,21 @@ import Button from '../../components/Button';
 import { BoldText, GrayText, ColorText, VSpacer, RowView } from './Info.style';
 import { formatAmount, statusColor, createNavBar } from '../../utils';
 import { TRANSACTIONS_STATUS } from '../../constants';
-import { updateTransaction } from '../../actions';
+import { updateTransaction, updateAllTransactions } from '../../actions';
 
 class Info extends Component {
   static navigationOptions = createNavBar('Info');
 
   onRefundThis = () => {
     const { currentTransaction, refundTransaction } = this.props;
-    refundTransaction({
-      ...currentTransaction,
-      status: TRANSACTIONS_STATUS.REFUNDED,
-    });
+    refundTransaction(currentTransaction, TRANSACTIONS_STATUS.REFUNDED);
   };
 
-  onRefundAll = () => {};
+  onRefundAll = () => {
+    const { transactions, refundAllTransactions } = this.props;
+    refundAllTransactions(transactions, TRANSACTIONS_STATUS.REFUNDED);
+    this.props.navigation.goBack();
+  };
 
   render() {
     const { currentTransaction } = this.props;
@@ -66,12 +67,16 @@ class Info extends Component {
   }
 }
 
-const mapStateToProps = ({ currentTransaction }) => ({
+const mapStateToProps = ({ currentTransaction, transactions }) => ({
   currentTransaction,
+  transactions,
 });
 
 const mapDispatchToProps = dispatch => ({
-  refundTransaction: transaction => dispatch(updateTransaction(transaction)),
+  refundTransaction: (transaction, status) =>
+    dispatch(updateTransaction(transaction, status)),
+  refundAllTransactions: (transactions, status) =>
+    dispatch(updateAllTransactions(transactions, status)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Info);

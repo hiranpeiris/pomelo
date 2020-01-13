@@ -5,7 +5,7 @@ const currentTransactionReducer = (state = null, action) => {
     case TRANSACTIONS.SELECT:
       return action.transaction;
     case TRANSACTIONS.UPDATE:
-      return action.transaction;
+      return { ...action.transaction, status: action.status };
     case TRANSACTIONS.CLEAR:
       return null;
     default:
