@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import { fetchTransactions } from '../api';
-import { setTransactions, setError } from '../actions';
+import { setTransactions, updateTransaction, setError } from '../actions';
 
 function* handleTransactionsLoad() {
   try {
@@ -11,4 +11,8 @@ function* handleTransactionsLoad() {
   }
 }
 
-export { handleTransactionsLoad };
+function* handleUpdateTransaction(transaction, status) {
+  yield put(updateTransaction(transaction, status));
+}
+
+export { handleTransactionsLoad, handleUpdateTransaction };

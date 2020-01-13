@@ -14,4 +14,34 @@ const setError = error => ({
   error,
 });
 
-export { loadTransactions, setTransactions, setError };
+const updateTransaction = (transaction, status) => ({
+  type: TRANSACTIONS.UPDATE,
+  transaction,
+  status,
+});
+
+const updateAllTransactions = (transactions, status) => ({
+  type: TRANSACTIONS.UPDATE_ALL,
+  transactions,
+  status,
+});
+
+const setCurrentTransaction = transaction => ({
+  type: TRANSACTIONS.SELECT,
+  transaction,
+});
+
+const clearCurrentTransaction = transaction => ({
+  type: TRANSACTIONS.CLEAR,
+  transaction,
+});
+
+export {
+  loadTransactions,
+  setTransactions,
+  setError,
+  updateTransaction,
+  updateAllTransactions,
+  setCurrentTransaction,
+  clearCurrentTransaction,
+};

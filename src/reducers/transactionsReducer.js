@@ -1,10 +1,19 @@
 import { TRANSACTIONS } from '../constants';
 
 const transactionsReducer = (state = [], action) => {
-  if (action.type === TRANSACTIONS.LOAD_SUCCESS) {
-    return [...state, ...action.transactions];
+  switch (action.type) {
+    case TRANSACTIONS.LOAD_SUCCESS:
+      return action.transactions;
+    case TRANSACTIONS.UPDATE:
+      return state.map(t => {
+        if (t.id === action.transaction.id) {
+          return { ...action.transaction, status: action.status };
+        }
+        return t;
+      });
+    default:
+      return state;
   }
-  return state;
 };
 
 export default transactionsReducer;

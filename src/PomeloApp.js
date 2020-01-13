@@ -1,23 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import Transactions from './screens/Transactions';
+import Info from './screens/Info';
 
-class PomeloApp extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Pomelo App</Text>
-      </View>
-    );
-  }
-}
-
-export default PomeloApp;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
+const AppNavigator = createStackNavigator({
+  Transactions,
+  Info,
 });
+
+export default createAppContainer(AppNavigator);

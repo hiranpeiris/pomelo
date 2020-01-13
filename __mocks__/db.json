@@ -1,0 +1,60 @@
+{
+  "transactions": [
+    {
+      "id": "2873g238r7t123879134",
+      "merchant": "Subway",
+      "amount": 50.45,
+      "status": "COMPLETED",
+      "date": "2020-01-13T00:35:29.674Z"
+    },
+    {
+      "id": "ql3i4u5873fq2347r178",
+      "merchant": "KFC",
+      "amount": 35.55,
+      "status": "COMPLETED",
+      "date": "2020-01-12T00:35:29.674Z"
+    },
+    {
+      "id": "958ygjsefhgouiwerhlgj",
+      "merchant": "McDonalds",
+      "amount": 65.85,
+      "status": "COMPLETED",
+      "date": "2020-01-11T00:35:29.674Z"
+    },
+    {
+      "id": "9586tgejsfghowyqefh37",
+      "merchant": "Bread Talks",
+      "amount": 80.25,
+      "status": "REFUNDED",
+      "date": "2020-01-10T00:35:29.674Z"
+    },
+    {
+      "id": "23948yjfkjwfjwjefkjwe",
+      "merchant": "UNIQLO",
+      "amount": 120.45,
+      "status": "COMPLETED",
+      "date": "2020-01-09T00:35:29.674Z"
+    },
+    {
+      "id": "wefgwgr7348gwyfgqueh2",
+      "merchant": "Challenger",
+      "amount": 1600.55,
+      "status": "REFUNDED",
+      "date": "2020-01-08T00:35:29.674Z"
+    },
+    {
+      "id": "ldksnfo328f32o4gfruqq",
+      "merchant": "Apple",
+      "amount": 2265.55,
+      "status": "COMPLETED",
+      "date": "2020-01-07T00:35:29.674Z"
+    },
+    {
+      "id": "43958fh3her239112wdkj",
+      "merchant": "GameZone",
+      "amount": 78.95,
+      "status": "COMPLETED",
+      "date": "2020-01-06T00:35:29.674Z"
+    }
+  ]
+}
