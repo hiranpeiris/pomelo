@@ -1,12 +1,15 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { ButtonView, ButtonTitle } from './Button.style';
 
-const Button = ({ children, width, color }) => {
+const Button = ({ children, onClick, width, color }) => {
   return (
-    <ButtonView width={width} color={color}>
-      <ButtonTitle>{children}</ButtonTitle>
-    </ButtonView>
+    <TouchableOpacity onPress={onClick}>
+      <ButtonView width={width} color={color}>
+        <ButtonTitle>{children}</ButtonTitle>
+      </ButtonView>
+    </TouchableOpacity>
   );
 };
 
@@ -17,6 +20,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
   width: PropTypes.string,
   color: PropTypes.string,
 };

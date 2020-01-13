@@ -10,6 +10,10 @@ import { TRANSACTIONS_STATUS } from '../../constants';
 class Info extends Component {
   static navigationOptions = createNavBar('Info');
 
+  onRefundThis = () => {};
+
+  onRefundAll = () => {};
+
   render() {
     const { currentTransaction } = this.props;
 
@@ -42,11 +46,13 @@ class Info extends Component {
         <VSpacer space={60} />
         <RowView>
           {currentTransaction.status === TRANSACTIONS_STATUS.COMPLETED ? (
-            <Button color="#FF9966" width="140">
+            <Button color="#FF9966" width="140" onClick={this.onRefundThis}>
               REFUND THIS
             </Button>
           ) : null}
-          <Button width="140">REFUND ALL</Button>
+          <Button width="140" onClick={this.onRefundAll}>
+            REFUND ALL
+          </Button>
         </RowView>
       </Page>
     );

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ButtonView = styled.TouchableHighlight`
+export const ButtonView = styled.View`
   height: 44px;
   justify-content: center;
   align-items: center;
