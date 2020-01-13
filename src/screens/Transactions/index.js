@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { FlatList, View, TouchableOpacity } from 'react-native';
+import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Page from '../../components/Page';
 import SimpleListRow from '../../components/SimpleListRow';
+import Loading from '../../components/Loading';
 import { formatAmount, statusColor, createNavBar } from '../../utils';
 import { setCurrentTransaction } from '../../actions';
 
@@ -19,13 +20,13 @@ class Transactions extends Component {
     const { transactions, isLoading, error } = this.props;
 
     if (isLoading) {
-      return <View />;
+      return <Loading />;
     }
 
     return (
       <Page paddingTop="20" paddingLeft="20" paddingRight="20">
         {error ? (
-          <View />
+          <Text>{error}</Text>
         ) : (
           <FlatList
             data={transactions}

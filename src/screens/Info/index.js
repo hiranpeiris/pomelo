@@ -79,4 +79,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateAllTransactions(transactions, status)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Info);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Info);
