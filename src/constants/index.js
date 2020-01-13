@@ -4,6 +4,6 @@ const TRANSACTIONS = {
   LOAD_FAIL: 'TRANSACTIONS_LOAD_FAIL',
 };
 
-const BASE_URL = 'http://localhost:6000';
+const BASE_URL = 'http://localhost:3004';
 
 export { TRANSACTIONS, BASE_URL };

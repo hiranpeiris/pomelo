@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import rootReducer from '../reducers';
 import rootSaga from '../sagas';
+import { TRANSACTIONS } from '../constants';
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -11,6 +12,7 @@ const configureStore = () => {
     applyMiddleware(sagaMiddleware, logger),
   );
   sagaMiddleware.run(rootSaga);
+  store.dispatch({ type: TRANSACTIONS.LOAD });
   return store;
 };
 
