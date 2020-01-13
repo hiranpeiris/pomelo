@@ -1,12 +1,14 @@
+import { TRANSACTIONS_STATUS } from '../constants';
+
 export const formatAmount = amount => {
   return `SGD ${amount}`;
 };
 
 export const statusColor = status => {
   switch (status) {
-    case 'COMPLETED':
+    case TRANSACTIONS_STATUS.COMPLETED:
       return '#5FC98E';
-    case 'REFUNDED':
+    case TRANSACTIONS_STATUS.REFUNDED:
       return '#FF9966';
     default:
       return 'gray';

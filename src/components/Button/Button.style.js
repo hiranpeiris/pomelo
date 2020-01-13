@@ -5,7 +5,7 @@ export const ButtonView = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
   ${({ width }) => width && `width: ${width}`};
-  background-color: ${({ color }) => (color && color) || '#0080ff'};
+  background-color: ${({ color }) => (color && color) || '#5FC98E'};
   border-radius: 10px;
 `;
 

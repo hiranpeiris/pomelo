@@ -5,12 +5,14 @@ import moment from 'moment';
 import Page from '../../components/Page';
 import SimpleListRow from '../../components/SimpleListRow';
 import { formatAmount, statusColor, createNavBar } from '../../utils';
+import { setCurrentTransaction } from '../../actions';
 
 class Transactions extends Component {
   static navigationOptions = createNavBar('Transactions');
 
   onSelectTransaction = transaction => {
-    this.props.navigation.navigate('Info', { transaction });
+    this.props.setCurrentTransaction(transaction);
+    this.props.navigation.navigate('Info');
   };
 
   render() {
@@ -53,7 +55,12 @@ const mapStateToProps = ({ transactions, isLoading, error }) => ({
   error,
 });
 
+const mapDispatchToProps = dispatch => ({
+  setCurrentTransaction: transaction =>
+    dispatch(setCurrentTransaction(transaction)),
+});
+
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(Transactions);
