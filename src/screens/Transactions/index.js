@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Page from '../../components/Page';
 import SimpleListRow from '../../components/SimpleListRow';
-import { formatAmount, statusColor } from '../../utils';
+import { formatAmount, statusColor, createNavBar } from '../../utils';
 
 class Transactions extends Component {
+  static navigationOptions = createNavBar('Transactions');
+
+  onSelectTransaction = transaction => {
+    this.props.navigation.navigate('Info', { transaction });
+  };
+
   render() {
     const { transactions, isLoading, error } = this.props;
 
@@ -15,21 +21,24 @@ class Transactions extends Component {
     }
 
     return (
-      <Page paddingTop="40" paddingLeft="20" paddingRight="20">
+      <Page paddingTop="20" paddingLeft="20" paddingRight="20">
         {error ? (
           <View />
         ) : (
           <FlatList
             data={transactions}
             renderItem={({ item }) => (
-              <SimpleListRow
+              <TouchableOpacity
                 key={item.id}
-                title={item.merchant}
-                desc={formatAmount(item.amount)}
-                bottomLeftText={item.status}
-                bottomLeftTextColor={statusColor(item.status)}
-                bottomRightText={moment(item.date).format('lll')}
-              />
+                onPress={() => this.onSelectTransaction(item)}>
+                <SimpleListRow
+                  title={item.merchant}
+                  desc={formatAmount(item.amount)}
+                  bottomLeftText={item.status}
+                  bottomLeftTextColor={statusColor(item.status)}
+                  bottomRightText={moment(item.date).format('lll')}
+                />
+              </TouchableOpacity>
             )}
           />
         )}

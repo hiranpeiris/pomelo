@@ -12,3 +12,11 @@ export const statusColor = status => {
       return 'gray';
   }
 };
+
+export const createNavBar = title => {
+  return {
+    title,
+    headerTintColor: 'white',
+    headerStyle: { backgroundColor: '#5FC98E' },
+  };
+};

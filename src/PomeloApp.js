@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import Transactions from './screens/Transactions';
+import Info from './screens/Info';
 
-class PomeloApp extends Component {
-  render() {
-    return <Transactions />;
-  }
-}
+const AppNavigator = createStackNavigator({
+  Transactions,
+  Info,
+});
 
-export default PomeloApp;
+export default createAppContainer(AppNavigator);
