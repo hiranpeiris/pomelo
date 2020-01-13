@@ -6,11 +6,18 @@ import Button from '../../components/Button';
 import { BoldText, GrayText, ColorText, VSpacer, RowView } from './Info.style';
 import { formatAmount, statusColor, createNavBar } from '../../utils';
 import { TRANSACTIONS_STATUS } from '../../constants';
+import { updateTransaction } from '../../actions';
 
 class Info extends Component {
   static navigationOptions = createNavBar('Info');
 
-  onRefundThis = () => {};
+  onRefundThis = () => {
+    const { currentTransaction, refundTransaction } = this.props;
+    refundTransaction({
+      ...currentTransaction,
+      status: TRANSACTIONS_STATUS.REFUNDED,
+    });
+  };
 
   onRefundAll = () => {};
 
@@ -63,7 +70,8 @@ const mapStateToProps = ({ currentTransaction }) => ({
   currentTransaction,
 });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(Info);
+const mapDispatchToProps = dispatch => ({
+  refundTransaction: transaction => dispatch(updateTransaction(transaction)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Info);
